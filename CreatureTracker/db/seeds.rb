@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+Creature.delete_all
+25.times do
+  Creature.create!(
+    name: Faker::Name.first_name,
+    species: Faker::ElderScrolls.creature,
+    status: Faker::Boolean.boolean
+  )
+end

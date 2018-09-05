@@ -2,7 +2,7 @@ class CreaturesController < ApplicationController
   before_action :set_creature, only: [:show, :update, :destroy]
 
   def index
-    @creatures = creature.all
+    @creatures = Creature.all
     render json: @creatures
    
   end
@@ -48,4 +48,4 @@ class CreaturesController < ApplicationController
       params.require(:creature).permit(:name, :species, :status)
     end
 end
-end
+
