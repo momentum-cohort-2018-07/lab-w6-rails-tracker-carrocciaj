@@ -14,3 +14,4 @@ Creature.delete_all
     status: Faker::Boolean.boolean
   )
 end
+
