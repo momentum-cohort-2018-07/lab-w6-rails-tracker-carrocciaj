@@ -1,4 +1,4 @@
-class CreaturesController < ApplicationController
+class Api::CreaturesController < ApplicationController
   before_action :set_creature, only: [:show, :update, :destroy]
 
   def index
@@ -17,7 +17,7 @@ class CreaturesController < ApplicationController
     @creature = Creature.new(creature_params)
 
     if @creature.save
-      render json: @creature, status: :created, location: @creature
+      render json: @creature, status: :created
     else
       render json: @creature.errors, status: :unprocessable_entity
     end

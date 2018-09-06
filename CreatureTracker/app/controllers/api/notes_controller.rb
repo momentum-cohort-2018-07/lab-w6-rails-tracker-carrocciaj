@@ -1,8 +1,13 @@
-class NotesController < ApplicationController
+class Api::NotesController < ApplicationController
   before_action :set_note, only: [:show, :update, :destroy]
-  
+  def index
+    @creature = Creature.find(params[:creature_id])
+    @notes = @creature.notes
+    render json: @notes
+  end
   def show
     @creature = Creature.find(params[:creature_id])
+    
     render json: @note
   end
   
@@ -13,20 +18,20 @@ class NotesController < ApplicationController
 end
 
 def update
-  @creature = Creature.find(params[:user_id])
+  @creature = Creature.find(params[:creature_id])
 
   if @note.update(note_params)
-    redirect_to creature_path(@creature)
+    render json: @note
   else
-    render 'edit'
+    render json: @note
   end
 end
 
 def destroy
   @creature = Creature.find(params[:creature_id])
   @note.destroy
- 
-  redirect_to creature_path(@creature)
+  render json: @creature.notes
+  
 end
 
 private 
