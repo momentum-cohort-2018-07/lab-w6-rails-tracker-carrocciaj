@@ -35,6 +35,7 @@ class Api::CreaturesController < ApplicationController
 
   def destroy
     @creature.destroy
+    
   end
 
   private
